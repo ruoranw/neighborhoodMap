@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Udacity Neighborhood Map</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+
+</head>
+<body>
+    <div id="map"></div>
+    <div class="searchBox">
+        <h1>Explore Downtow LA</h1>
+
+        <form action="#">
+            <input id = "searchBar" data-bind="value: query, valueUpdate: 'keyup'" type="search" name="q" placeholder="Search By Name" autocomplete="off">
+        </form>
+
+        <div id="list">
+            <ul data-bind="template: {name:'item', foreach:model}">
+            </ul>
+        </div>
+    </div>
+    <div id="map"></div>
+
+<script type="text/html" id="item">
+    <li>
+        <strong data-bind="text: title"></strong>
+    </li>
+</script>
+<!-- <script>
+    var map;
+    function initMap(){
+        //constructor of creating a map
+        map = new google.maps.Map(document.getElementById('map'),{
+            center: {lat:34.056329,lng:-118.246771},
+            zoom: 12
+        });
+    }
+</script> -->
+<script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBx51dZPg356qIkf9bTlTtlq4rKYsWq7nw&v=3&callback=initMap">
+</script>
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/knockout-3.4.2.js"></script>
+</body>
+</html>
