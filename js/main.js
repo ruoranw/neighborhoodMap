@@ -2,17 +2,37 @@
 // this is the function that make a map appear
 var map;
 var markers = [];
+var model = [];
+//Create infowindow and bounds variable for later use
+var LargeInfoWindow = new google.maps.InfoWindow();
+var bounds = new google.maps.LatLngBounds();
+
 function initMap(){
     //constructor of creating a map
     map = new google.maps.Map(document.getElementById('map'),{
         center: {lat:34.056329,lng:-118.246771},
-        zoom: 10
+        zoom: 13
     });
+    // Loop over the model to create markers
+    for (var i = 0; i < model.length; i++){
+    var position = model[i].location;
+    var title = model[i].title;
+    // Create a marker for each location
+    var marker = new google.maps.Marker({
+        map: map,
+        position: position,
+        title:title,
+        animation: google.maps.Animation.DROP,
+        id: i
+    });
+
+    console.log(title);
+    };
 };
 
 $(document).ready(function(){
 
-    var model = [
+    model = [
     {title:'Staples Center', location:{lat:34.043006, lng:-118.26736}},
     {title:'University of Southern California', location:{lat:34.022352, lng:-118.285117}},
     {title:'China Town', location:{lat:34.062334, lng:-118.238331}},
@@ -25,23 +45,7 @@ $(document).ready(function(){
     {title:'Los Angeles City Hall', location:{lat:34.053527, lng:-118.242932}}
     ];
 
-
-    //     for (var i = 0; i < model.length; i++){
-    //     var position = model[i].location;
-    //     var title = model[i].title;
-    //     // Create a marker for each location
-    //     var marker = new google.maps.Marker({
-    //         map: map,
-    //         position: position,
-    //         title:title,
-    //         animation: google.maps.Animation.DROP,
-    //         id: i
-    //     });
-
-    //     console.log(title);
-    // };
-
-
+    //for filter list
     var viewModel = {
         query: ko.observable('')
     };
@@ -55,16 +59,6 @@ $(document).ready(function(){
     }, viewModel);
 
     ko.applyBindings(viewModel);
-
-
-    // Create infowindow and bounds variable for later use
-    // var LargeInfoWindow = new google.maps.InfoWindow();
-    // var bounds = new google.maps.LatLngBounds();
-
-    // Loop over the model to create markers
-
-
-
 
     //     var listItems = title;
     //     document.getElementById('list').innerHTML += listItems + '<br>';
