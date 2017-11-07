@@ -1,4 +1,15 @@
 
+// this is the function that make a map appear
+var map;
+var markers = [];
+function initMap(){
+    //constructor of creating a map
+    map = new google.maps.Map(document.getElementById('map'),{
+        center: {lat:34.056329,lng:-118.246771},
+        zoom: 10
+    });
+};
+
 $(document).ready(function(){
 
     var model = [
@@ -14,16 +25,6 @@ $(document).ready(function(){
     {title:'Los Angeles City Hall', location:{lat:34.053527, lng:-118.242932}}
     ];
 
-    // this is the function that make a map appear
-    var map;
-    var markers = [];
-    function initMap(){
-        //constructor of creating a map
-        map = new google.maps.Map(document.getElementById('map'),{
-            center: {lat:34.056329,lng:-118.246771},
-            zoom: 10
-        });
-    };
 
     //     for (var i = 0; i < model.length; i++){
     //     var position = model[i].location;
