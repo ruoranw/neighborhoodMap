@@ -2,22 +2,26 @@
 <html>
 <head>
     <title>Udacity Neighborhood Map</title>
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
+    <!-- create a div to contain map -->
     <div id="map"></div>
+
     <div class="searchBox">
         <h1>Explore Downtow LA</h1>
 
         <form action="#">
-            <input id = "searchBar" data-bind="value: query, valueUpdate: 'keyup'" type="search" name="q" placeholder="Search By Name" autocomplete="off">
+            <input id = "searchBar" data-bind="textInput:query" type="text" name="q" placeholder="Search By Name" autocomplete="off">
         </form>
 
         <div id="list">
-            <ul data-bind="template: {name:'item', foreach:model}">
+            <ul data-bind="template: {name:'item', foreach:filterResult}">
             </ul>
         </div>
     </div>
+
     <div id="map"></div>
 
 <script type="text/html" id="item">
@@ -25,9 +29,10 @@
         <strong data-bind="text: title"></strong>
     </li>
 </script>
+<script type="text/javascript" src="js/knockout-3.4.2.js"></script>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/knockout-3.4.2.js"></script>
+
 <script async defer
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWuIlGLDW2kHLSaHAUqSh9dzlOOkz0w_I&v=3&callback=initMap">
 </script>
