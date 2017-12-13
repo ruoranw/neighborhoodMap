@@ -35,3 +35,6 @@ input {
   font-size: 12px;
   width: 100%;
 }
+#infoWindowContent{
+  overflow: auto;
+}
