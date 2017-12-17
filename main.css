@@ -13,8 +13,8 @@ body {
   position: absolute;
   right: 0px;
   top: 0px;
+  width: 100%;
 }
-
 h1 {
   color: #525454;
   font-size: 22px;
@@ -38,7 +38,6 @@ input {
   -ms-transition: 0.2s ease-in-out;
   -o-transition: 0.2s ease-in-out;
 }
-
 /* Menu */
 .menu-container:hover .menu-slide {
   -o-transform: translate(270px, 0);
@@ -48,7 +47,6 @@ input {
   transform: translate(270px, 0);
   opacity: 1;
 }
-
 .menu-container .menu-btn {
   color: #333333;
   position: fixed;
@@ -56,13 +54,12 @@ input {
   left: 30px;
   cursor: pointer;
   z-index: 10000;
-  font-size: 23px;
+  font-size: 48px;
   text-decoration: none;
 }
 .menu-container .menu-btn:hover {
   color: #666666;
 }
-
 .menu-container .menu-slide {
   margin: 0;
   padding: 0;
@@ -81,13 +78,11 @@ input {
   position: fixed;
   opacity: 0;
 }
-
 .menu-container .menu-slide .menu-list{
   padding: 0;
   margin: 0px;
   list-style: none;
 }
-
 .menu-container .menu-slide .menu-list .menu-item {
   /*background-color: #333;*/
   padding: 8px;
@@ -101,9 +96,3 @@ input {
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
 }
-
-
-
-
-
-

@@ -1,64 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Udacity Neighborhood Map</title>
     <meta charset="utf-8">
+    <!-- Add the viewport for different devices. -->
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <title>Neighborhood Map</title>
     <!-- FontAwesome -->
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- Google Web Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,300italic,400italic,500italic" rel="stylesheet" type="text/css">
+    <!-- Link to CSS file -->
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <!-- create a div to contain map -->
-
-
+    <!-- The toggle navBar which includes an input and a list view -->
     <nav class="menu-container">
         <a href="#" class="menu-btn"><i class="fa fa-bars fa-lg"></i></a>
-
         <div class="menu-slide">
-
             <form action="#">
-
                 <h1>Explore Downtown LA</h1>
-
                 <input id = "searchBar" data-bind="textInput:query" type="text" name="q" placeholder="Search By Name" autocomplete="off">
             </form>
-
             <div id="list">
                 <ul data-bind="template: {name:'item', foreach:filterResult}" class="menu-list">
                 </ul>
             </div>
         </div>
-
     </nav>
-
+    <!-- create a div to contain map -->
     <div id="map"></div>
-
-
-
-<script type="text/html" id="item">
-    <li class="menu-item">
-        <strong data-bind="text: title, click: getInfoWindow"></strong>
-    </li>
-</script>
-
-<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-<script>
-$('#button').toggle(
-    function(){
-        $('#map').css('left', '0')
-    }, function(){
-        $('#map').css('left', '345px')
-
-    })
-</script>
-<script type="text/javascript" scr="js/navbar.js"></script>
-<script type="text/javascript" src="js/knockout-3.4.2.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script async defer
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWuIlGLDW2kHLSaHAUqSh9dzlOOkz0w_I&v=3&callback=initMap">
-</script>
-
+    <!-- The script is for the list item -->
+    <script type="text/html" id="item">
+        <li class="menu-item">
+            <strong data-bind="text: title, click: getInfoWindow"></strong>
+        </li>
+    </script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/knockout-3.4.2.js"></script>
+    <script src="js/main.js"></script>
+    <!-- This is for the google map API callback -->
+    <script async defer
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWuIlGLDW2kHLSaHAUqSh9dzlOOkz0w_I&v=3&callback=initMap" onerror="googleMapError()">
+    </script>
 </body>
 </html>
