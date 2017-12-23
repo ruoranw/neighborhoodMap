@@ -1,11 +1,10 @@
 // create a global variable to hold the map
 var map;
+var i;
 // model includes the place name,its Foursquare venue id and location
 var model = [
-        {title: 'Staples Center', venue_id: '42893400f964a5207e231fe3', location: {lat: 34.043006, lng: -118.26736}},
         {title: 'University of Southern California', venue_id: '45001adcf964a520ab381fe3', location: {lat: 34.022352, lng: -118.285117}},
         {title: 'China Town', venue_id: '508760b5e4b0d647dab288a6', location: {lat: 34.062334, lng: -118.238331}},
-        {title: 'Pershing Square', venue_id: '4352e980f964a520c7281fe3', location: {lat: 34.048569, lng: -118.252892}},
         {title: 'Union Station', venue_id: '45b88de0f964a520ce411fe3', location: {lat: 34.056219, lng: -118.236502}},
         {title: 'Grand Park LA', venue_id: '4fecf601067d351381ea64fa', location: {lat: 34.056329, lng: -118.246771}},
         {title: 'Dodger Stadium', venue_id: '40db6b00f964a5207d011fe3', location: {lat: 34.073851, lng: -118.239958}},
@@ -98,7 +97,7 @@ function viewModel() {
 //make markers appear on map
 function showMarkers() {
     var self = this;
-    for (var i=0; i<self.markers().length; i++){
+    for (i=0; i<self.markers().length; i++){
         self.markers()[i].setVisible(true);
         self.markers()[i].setAnimation(null);
     }
@@ -147,11 +146,15 @@ function populateInfoWindow(place) {
     var streetViewAPI = 'AIzaSyA-wuhRggL_R0VvRimv2eIzlPOk2JyAoRM';
     var lat = place.location.lat;
     var lng = place.location.lng;
-    var streetViewAPIendPoint = 'https://maps.googleapis.com/maps/api/streetview?' + 'size=400x400&location=' + lat + ',' + lng + '&heading=100&pitch=10&scale=2' + '&key=' + streetViewAPI;
+    var streetViewAPIendPoint = 'https://maps.googleapis.com/maps/api/streetview?' + 'size=400x400&location=' + lat + ',' + lng + '&heading=151.78&pitch=-0.76&scale=2' + '&key=' + streetViewAPI;
     // Check if image available
     (!streetViewAPIendPoint) ?
     self.googlePhoto('Sorry, no photo available') :
     self.googlePhoto(streetViewAPIendPoint);
+    // if(streetViewAPIendPoint == false){
+    //     self.googlePhoto('Sorry, no photo available.')
+    // }else{self.googlePhoto(streetViewAPIendPoint)
+    // };
     //Foursquare credentials
     var foursquareClientID = 'DENTERFPABEBP30U0SMIYWBRXNZA1DLQRMEZH3HXFBENLKXT';
     var foursquareClientSecret = 'P0UYTAX53TJI3DYTNTFZTH0EL1F2TKBAF4E1HCMXRIYNA5K4';
@@ -169,8 +172,13 @@ function populateInfoWindow(place) {
         // Set the venue details
         self.venue_name(fourSquareLocation.name);
         self.venue_likes(fourSquareLocation.likes.count);
-        self.venue_rating(fourSquareLocation.rating);
+        // self.venue_rating(fourSquareLocation.rating);
 
+        if(fourSquareLocation.rating == undefined){
+            self.venue_rating('Sorry, no rating in this location.')
+        }else{
+            self.venue_rating(fourSquareLocation.rating)
+        }
 
         var addressForm = '';
         address.forEach(function (address) {
@@ -222,7 +230,7 @@ function setTimer(marker) {
 }
 // This function close all of the infoWindows
 function closeInfoWindows() {
-    for (var i=0; i<this.infoWindowArray().length; i++) {
+    for (i=0; i<this.infoWindowArray().length; i++) {
         this.infoWindowArray()[i].close();
     }
 }
