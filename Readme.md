@@ -18,3 +18,5 @@ The map view can be adjusted according to different device including phone , ipa
 4. The the peoject will be run on the browser.
 
 This project is a part of FSND (**Udacity**)
+
+If you have any questions, please contact 213-399-5053.
